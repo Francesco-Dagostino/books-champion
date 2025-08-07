@@ -1,19 +1,40 @@
-import React from 'react'
+import React from "react";
 
-const BookItem = () => {
-    const bookTitle = "100 años de soledad";
-    const bookAuthor = "Gabriel Garcia Marquez";
-    const bookRating = 5;
-    const bookPages = 410;
+import { Badge, Card, Button } from "react-bootstrap";
 
+const BookItem = ({
+  title,
+  author,
+  rating,
+  pageCount,
+  available,
+  imageUrl,
+}) => {
   return (
     <>
-    <h2>{bookTitle}</h2> 
-    <h3>{bookAuthor}</h3>
-    <div>{bookRating} Estrellas</div>
-    <p>{bookPages} Pàginas</p>
+      <Card style={{ width: "22rem" }} className="mx-3">
+        <Card.Img height={400} variant="top" src={imageUrl} />
+        <Card.Body>
+          <div className="mb-2">
+            {available ? (
+              <Badge bg="succes" color="black">
+                Disponible
+              </Badge>
+            ) : (
+              <Badge bg="danger">Reservado</Badge>
+            )}
+          </div>
+          <Card.Title>{title}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">{author}</Card.Subtitle>
+          <div>
+            {rating} estrella{rating > 1 ? "s" : ""}
+          </div>
+          <p>{pageCount} paginas</p>
+          <Button>Actualizar titulo</Button>
+        </Card.Body>
+      </Card>
     </>
-  )
-}
+  );
+};
 
-export default BookItem
+export default BookItem;
