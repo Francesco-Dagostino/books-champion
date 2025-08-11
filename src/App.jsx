@@ -1,11 +1,10 @@
+import { useState } from 'react';
 import './App.css'
-import Book from './components/book/Book';
+import Books from './components/books/Books';
 import BookItem from './components/bookItem/BookItem'
-import BookUseState from './components/bookItem/bookUseState/BookUseState'
+import NewBook from './components/newBook/NewBook';
 
-function App() {
-
-  const books = [
+const booksInitial = [
   {
     title: "100 años de soledad",
     author: "Gabriel García Marquez",
@@ -43,13 +42,29 @@ function App() {
     available: true,
   },
 ];
+
+function App() {
+
+  const[bookList, setBookList] = useState(booksInitial)
+
+  const handleBookAdded = (enteredBook) =>
+  {
+    const bookData = {
+      ...enteredBook,
+      id: Math.random()
+    }
+    setBookList(prevBooksList => [bookData, ...prevBooksList])
+
+  } 
+
   
   return (
-    <>
+    <div className='d-flex flex-column aling-items-center'>
       <h2>Books Champion App"</h2>
       <p>¡Quiero leer libros!</p>
-      <Book books={books}/>
-    </>
+      <NewBook onBookAdded={handleBookAdded}/>
+      <Books books={bookList}/>
+    </div>
   )
 }
 
