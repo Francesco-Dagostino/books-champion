@@ -3,6 +3,7 @@ import './App.css'
 import Books from './components/books/Books';
 import BookItem from './components/bookItem/BookItem'
 import NewBook from './components/newBook/NewBook';
+import BooksSearch from './components/bookSearch/BooksSearch';
 
 const booksInitial = [
   {
