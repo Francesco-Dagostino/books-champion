@@ -4,7 +4,6 @@ import Books from './components/books/Books';
 import BookItem from './components/bookItem/BookItem'
 import NewBook from './components/newBook/NewBook';
 import BooksSearch from './components/bookSearch/BooksSearch';
-import Login from './auth/login/Login';
 
 const booksInitial = [
   {
@@ -62,7 +61,12 @@ function App() {
   
   return (
     <div className='d-flex flex-column aling-items-center'>
-      <Login/>
+      <h2>Books Champion App"</h2>
+      <p>¡Quiero leer libros!</p>
+      <NewBook onBookAdded={handleBookAdded}/>
+      <Books books={bookList}/>
+
+      
     </div>
   )
 }
