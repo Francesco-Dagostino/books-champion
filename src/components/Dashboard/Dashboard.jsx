@@ -3,6 +3,7 @@ import Books from '../books/Books';
 import BookItem from '../bookItem/BookItem'
 import NewBook from '../newBook/NewBook';
 import BooksSearch from '../bookSearch/BooksSearch';
+import { useNavigate } from 'react-router';
 
 const booksInitial = [
   {
@@ -44,9 +45,16 @@ const booksInitial = [
 ];
 
 
-const Dashboard = () => {
+const Dashboard = ({onsingout}) => {
     const[bookList, setBookList] = useState(booksInitial)
-    
+
+    const navigate = useNavigate();
+    const handleClick = () => {
+      onsingout(true)
+      navigate("/login")
+    }
+
+
     const handleBookAdded = (enteredBook) =>
         {
     const bookData = {
@@ -59,6 +67,10 @@ const Dashboard = () => {
     <>
     <h2>Books Champion App"</h2>
       <p>¡Quiero leer libros!</p>
+    <button className='btn btn-primary position-absolute top-0 end-0 m-3'
+      onClick={handleClick}>
+      Cerrar sesion
+    </button>
       <NewBook onBookAdded={handleBookAdded}/>
       <Books books={bookList}/>
     </>
