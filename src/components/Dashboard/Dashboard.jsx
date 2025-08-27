@@ -3,7 +3,7 @@ import Books from '../books/Books';
 import BookItem from '../bookItem/BookItem'
 import NewBook from '../newBook/NewBook';
 import BooksSearch from '../bookSearch/BooksSearch';
-import { useNavigate } from 'react-router';
+
 
 const booksInitial = [
   {
@@ -47,11 +47,8 @@ const booksInitial = [
 
 const Dashboard = ({onsingout}) => {
     const[bookList, setBookList] = useState(booksInitial)
-
-    const navigate = useNavigate();
     const handleClick = () => {
       onsingout(true)
-      navigate("/login")
     }
 
 

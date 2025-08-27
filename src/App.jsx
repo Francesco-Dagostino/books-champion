@@ -10,14 +10,13 @@ import { useState } from "react"
 function App() {
   
   const [loggeedIn, setLoggedIn] = useState(false)
-  const [singOut, setSingOut] = useState(true)
-
+  
   const handleLogin = () => {
     setLoggedIn(true)
   }
 
   const handleSingOut = () => {
-    setSingOut(false)
+    setLoggedIn(false)
   }
 
   return (
@@ -26,7 +25,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login onlogin={handleLogin}/>}/>
           <Route path="/dashboard" element={
-            <Protected isSignedIn={loggeedIn} isSignedOut={singOut} >
+            <Protected isSignedIn={loggeedIn} >
               <Dashboard onsingout={handleSingOut}/>
             </Protected>
             }/>
